@@ -1,0 +1,14 @@
+.user-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.user-menu-item:hover {
+    background-color: var(--second-bg);
+}
+
+.user-menu-item > i {
+    margin-right: 20px;
+    font-size: 1.5rem;
+}

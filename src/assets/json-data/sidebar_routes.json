@@ -1,0 +1,22 @@
+[
+    {
+        "display_name": "Home",
+        "route": "/",
+        "icon": "bx bx-home"
+    },
+    {
+        "display_name": "Dashboard",
+        "route": "/dashboard",
+        "icon": "bx bx-category-alt"
+    },
+    {
+        "display_name": "Cryptocurrencies",
+        "route": "/cryptocurrencies",
+        "icon": "bx bx-coin-stack"
+    },
+    {
+        "display_name": "News",
+        "route": "/news",
+        "icon": "bx bx-news"
+    }    
+]
