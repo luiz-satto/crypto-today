@@ -7,7 +7,7 @@ import './index.css'
 
 const UserMenu: React.FC<IUserMenu> = props => {
     return (
-        <Link to='/' key={props.index}>
+        <Link key={props.index} to='/'>
             <div className="user-menu-item">
                 <i className={props.item.icon}></i>
                 <span>{props.item.content}</span>
