@@ -8,6 +8,7 @@ import { CryptoCoin } from '../../types/CryptoCoin';
 import Loader from '../../components/Loader';
 import millify from 'millify';
 import './index.css';
+import SearchBar from '../../components/SearchBar';
 
 interface IProps {
     simplified?: boolean
@@ -32,10 +33,7 @@ const Cryptocurrencies: React.FC<IProps> = props => {
     return (
         <Fragment>
             {!props.simplified && (
-                <div className='search-crypto'>
-                    <Input placeholder='Search here...' onChange={(e) => setSearchTerm(e.target.value)} />
-                    <i className='bx bx-search'></i>
-                </div>
+                <SearchBar setSearchTerm={setSearchTerm} />
             )}
 
             <Row gutter={[32, 32]} className='crypto-card-container'>

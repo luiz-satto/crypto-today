@@ -1,20 +1,22 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
 import Cryptocurrencies from './pages/Cryptocurrencies';
+import CryptoDetails from './pages/CryptoDetails';
 import News from './pages/News';
 
-const Routes: React.FC = () => {
+const Router: React.FC = () => {
     return (
-        <Switch>
-            <Route path="/" exact component={Homepage} />
-            <Route path="/Dashboard" exact component={Dashboard} />
-            <Route path="/Cryptocurrencies" exact component={Cryptocurrencies} />
-            <Route path="/News" exact component={News} />
-        </Switch>
+        <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+            <Route path="/cryptocurrencies/:coinId" element={<CryptoDetails />} />
+            <Route path="/news" element={<News />} />
+        </Routes>
     )
 }
 
-export default Routes
+export default Router;

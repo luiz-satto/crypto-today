@@ -2,21 +2,25 @@
     {
         "display_name": "Home",
         "route": "/",
-        "icon": "bx bx-home"
+        "icon": "bx bx-home",
+        "key": 0
     },
     {
         "display_name": "Dashboard",
         "route": "/dashboard",
-        "icon": "bx bx-category-alt"
+        "icon": "bx bx-category-alt",
+        "key": 1
     },
     {
         "display_name": "Cryptocurrencies",
         "route": "/cryptocurrencies",
-        "icon": "bx bx-coin-stack"
+        "icon": "bx bx-coin-stack",
+        "key": 2
     },
     {
         "display_name": "News",
         "route": "/news",
-        "icon": "bx bx-news"
-    }    
+        "icon": "bx bx-news",
+        "key": 3
+    }
 ]

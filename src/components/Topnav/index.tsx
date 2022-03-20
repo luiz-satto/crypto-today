@@ -1,17 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import Dropdown from '../Dropdown'
-import NotificationItem from '../NotificationItem'
-import UserMenu from '../UserMenu'
+import Dropdown from '../Dropdown';
+import NotificationItem from '../NotificationItem';
+import UserMenu from '../UserMenu';
 
-import userImage from '../../assets/images/user.png'
-import notifications from '../../assets/json-data/notification.json'
-import user_menu from '../../assets/json-data/user_menus.json'
+import userImage from '../../assets/images/user.png';
+import notifications from '../../assets/json-data/notification.json';
+import user_menu from '../../assets/json-data/user_menus.json';
 
-import './index.css'
-import IDropDownContent from '../Dropdown/IDropDownContent'
-import ThemeMenu from '../ThemeMenu'
+import IContentData from '../../interfaces/IContentData';
+import ThemeMenu from '../ThemeMenu';
+import SearchBar from '../SearchBar';
+
+import './index.css';
 
 const user = {
     displayName: 'Luiz Satto',
@@ -30,18 +32,18 @@ const renderUserToggle = (displayName: string, image: string) => (
 )
 
 const Topnav: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    console.log(searchTerm)
+    
     return (
         <div className='topnav'>
-            <div className="topnav__search">
-                <input type="text" placeholder='Search here...' />
-                <i className='bx bx-search'></i>
-            </div>
+            <SearchBar setSearchTerm={setSearchTerm} />
             <div className="topnav__right">
                 <div className="topnav__right-item">
                     <Dropdown
                         customToggle={() => renderUserToggle(user.displayName, user.image)}
                         contentData={user_menu}
-                        renderItems={(item: IDropDownContent, index: number) =>
+                        renderItems={(item: IContentData, index: number) =>
                             <UserMenu item={item} index={index} />
                         }
                     />
@@ -52,7 +54,7 @@ const Topnav: React.FC = () => {
                         badge='12'
                         contentData={notifications}
                         renderFooter={() => <Link to='/'>View All</Link>}
-                        renderItems={(item: IDropDownContent, index: number) =>
+                        renderItems={(item: IContentData, index: number) =>
                             <NotificationItem item={item} index={index} />
                         }
                     />

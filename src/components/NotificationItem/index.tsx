@@ -1,6 +1,6 @@
 import React from 'react'
 
-import INotification from './INotificationItem'
+import INotification from '../../interfaces/INotificationItem'
 
 import './index.css'
 

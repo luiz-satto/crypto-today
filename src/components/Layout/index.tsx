@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Sidebar from '../Sidebar'
 import Topnav from '../Topnav'
-import Routes from '../../routes'
+import Router from '../../routes'
 
 import './index.css'
 import ThemeAction from '../../redux/actions/ThemeAction'
@@ -22,20 +21,16 @@ const Layout: React.FC = () => {
   }, [dispatch])
 
   return (
-    <BrowserRouter>
-      <Route render={(props) => (
-        <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
-          <Sidebar {...props} />
-          <div className="layout__content">
-            <Topnav />
-            <div className="layout__content-main">
-              <Routes />
-            </div>
-          </div>
+    <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
+      <Sidebar />
+      <div className="layout__content">
+        <Topnav />
+        <div className="layout__content-main">
+          <Router />
         </div>
-      )} />
-    </BrowserRouter>
-  )
+      </div>
+    </div>
+  );
 }
 
 export default Layout

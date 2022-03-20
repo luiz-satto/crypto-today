@@ -68,33 +68,3 @@
 .crypto-card:hover {
     color: var(--second-color);
 }
-
-.search-crypto {
-    width: 250px;
-    margin: 20px auto 30px auto;
-    position: relative;
-    height: 50px;
-    background-color: var(--main-bg);
-    display: flex;
-    align-items: center;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-}
-
-.search-crypto > input {
-    height: 100%;
-    width: 100%;
-    border: none;
-    padding: 10px 60px 10px 20px;
-    font-size: 1rem;
-    border-radius: var(--border-radius);
-    color: var(--txt-color);
-    background-color: var(--main-bg);
-}
-
-.search-crypto > i {
-    font-size: 1.5rem;
-    position: absolute;
-    right: 20px;
-}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Typography } from 'antd';
 
 import SidebarItem from '../SidebarItem';
@@ -8,8 +8,9 @@ import icon from '../../assets/images/logo.png';
 import './index.css';
 
 const { Title } = Typography;
-const Sidebar: React.FC<RouteComponentProps> = props => {
-  const activeItem = sidebar_items.findIndex(item => item.route === props.location.pathname);
+const Sidebar: React.FC = () => {
+  const location = useLocation();
+  const activeItem = sidebar_items.findIndex(item => item.route === location.pathname);
 
   return (
     <div className='sidebar'>

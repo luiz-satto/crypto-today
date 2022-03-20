@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
-import IDropDownContent from './IDropDownContent'
+import IContentData from '../../interfaces/IContentData'
 
 import './index.css'
 
 interface IProps {
     icon?: string,
     badge?: string,
-    contentData: IDropDownContent[],
+    contentData: IContentData[],
     customToggle?: () => JSX.Element,
-    renderItems: (item: IDropDownContent, index: number) => JSX.Element,
+    renderItems: (item: IContentData, index: number) => JSX.Element,
     renderFooter?: () => JSX.Element
 }
 

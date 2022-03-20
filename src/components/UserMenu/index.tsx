@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import IUserMenu from './IUserMenu'
+import IUserMenu from '../../interfaces/IUserMenu'
 
 import './index.css'
 
