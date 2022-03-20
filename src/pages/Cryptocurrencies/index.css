@@ -15,7 +15,6 @@
     text-align: center;
     z-index: 1;
     text-transform: capitalize;
-    color: var(--second-color) !important;
 }
 
 .crypto-card-container {

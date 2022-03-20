@@ -6,8 +6,9 @@ import { useGetCryptoCoinsQuery } from '../../services/crypto-api';
 import StatusCard from '../../components/StatusCard';
 import Loader from '../../components/Loader';
 
-import Cryptocurrencies from '../Cryptocurrencies';
 import millify from 'millify';
+import Cryptocurrencies from '../Cryptocurrencies';
+import News from '../News';
 
 import './index.css';
 
@@ -72,7 +73,7 @@ const Homepage: React.FC = () => {
                 <Title level={2} className='home-title'>Latest Crypto News</Title>
                 <Title level={3} className='show-more'><Link to='news'>Show More</Link></Title>
             </div>
-            {/* <News simplified={true} /> */}
+            <News simplified={true} />
         </Fragment>
     )
 }
