@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Row } from 'antd';
+import { Typography, Row, Col } from 'antd';
 import { useGetCryptoCoinsQuery } from '../../services/crypto-api';
 
 import StatusCard from '../../components/StatusCard';
@@ -27,45 +27,41 @@ const Homepage: React.FC = () => {
         <Fragment>
             <Title level={2} className='heading'>Crypto Stats</Title>
             <Row gutter={[24, 24]}>
-                <div className='col-3'>
+                <Col xs={24} sm={12} lg={6} key={0}>
                     <StatusCard
                         title='Total Cryptocurrencies'
                         count={millify(totalCryptocurrencies)}
                         icon={'bx bx-dollar-circle'}
                     />
-                </div>
-
-                <div className='col-2'>
+                </Col>
+                <Col xs={18} sm={8} lg={4} key={1}>
                     <StatusCard
                         title='Total Exchanges'
                         count={millify(totalExchanges)}
                         icon={'bx bx-dollar-circle'}
                     />
-                </div>
-
-                <div className='col-2'>
+                </Col>
+                <Col xs={18} sm={8} lg={4} key={2}>
                     <StatusCard
                         title='Total Market Cap'
                         count={millify(totalMarketCap)}
                         icon={'bx bx-dollar'}
                     />
-                </div>
-
-                <div className='col-2'>
+                </Col>
+                <Col xs={18} sm={8} lg={4} key={3}>
                     <StatusCard
                         title='Total 24h Volume'
                         count={millify(total24hVolume)}
                         icon={'bx bx-dollar'}
                     />
-                </div>
-
-                <div className='col-2'>
+                </Col>
+                <Col xs={18} sm={8} lg={4} key={4}>
                     <StatusCard
                         title='Total Markets'
                         count={millify(totalMarkets)}
                         icon={'bx bx-dollar'}
                     />
-                </div>
+                </Col>
             </Row>
             <div className='home-heading-container'>
                 <Title level={2} className='home-title'>Top 10 Cryptocurrencies in the world</Title>

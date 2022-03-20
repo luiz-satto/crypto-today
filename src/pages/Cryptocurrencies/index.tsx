@@ -33,7 +33,8 @@ const Cryptocurrencies: React.FC<IProps> = props => {
         <Fragment>
             {!props.simplified && (
                 <div className='search-crypto'>
-                    <Input placeholder='Search Cryptocurrency' onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Input placeholder='Search here...' onChange={(e) => setSearchTerm(e.target.value)} />
+                    <i className='bx bx-search'></i>
                 </div>
             )}
 

@@ -1,6 +1,21 @@
-.search-crypto {
-    margin: 20px auto 30px auto;
-    width: 250px;
+.ant-card {
+    border: none !important;
+}
+
+.ant-card-head {
+    height: 30% !important;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--main-color) !important;
+    border-bottom: 1px solid var(--second-color) !important;
+}
+
+.ant-card-body {
+    flex-grow: 1;
+    text-align: center;
+    z-index: 1;
+    text-transform: capitalize;
+    color: var(--second-color) !important;
 }
 
 .crypto-card-container {
@@ -55,23 +70,32 @@
     color: var(--second-color);
 }
 
-.ant-card {
+.search-crypto {
+    width: 250px;
+    margin: 20px auto 30px auto;
+    position: relative;
+    height: 50px;
+    background-color: var(--main-bg);
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.search-crypto > input {
     height: 100%;
-    border: none !important;
+    width: 100%;
+    border: none;
+    padding: 10px 60px 10px 20px;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    color: var(--txt-color);
+    background-color: var(--main-bg);
 }
 
-.ant-card-head {
-    height: 30% !important;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: var(--main-color) !important;
-    border-bottom: 1px solid var(--second-color) !important;
-}
-
-.ant-card-body {
-    flex-grow: 1;
-    text-align: center;
-    z-index: 1;
-    text-transform: capitalize;
-    color: var(--second-color) !important;
+.search-crypto > i {
+    font-size: 1.5rem;
+    position: absolute;
+    right: 20px;
 }
