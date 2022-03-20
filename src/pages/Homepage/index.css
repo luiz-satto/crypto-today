@@ -1,0 +1,22 @@
+@media screen and (max-width: 500px) {
+    .heading {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .home-title {
+        font-size: 1.4rem !important;
+    }
+
+    .show-more {
+        font-size: 1.3rem !important;
+    }
+}
+
+.home-heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
