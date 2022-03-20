@@ -39,9 +39,10 @@ const Cryptocurrencies: React.FC<IProps> = props => {
 
             <Row gutter={[32, 32]} className='crypto-card-container'>
                 {cryptos?.map((currency) => (
-                    <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.uuid}>
+                    <Col xs={24} sm={12} lg={6} key={currency.uuid}>
                         <Link to={(props.simplified ? `cryptocurrencies/` : '') + `${currency.uuid}`}>
                             <Card
+                                className='crypto-card'
                                 title={`${currency.rank}. ${currency.name}`}
                                 extra={<img className='crypto-image' src={currency.iconUrl} alt={currency.iconUrl} />}
                                 hoverable

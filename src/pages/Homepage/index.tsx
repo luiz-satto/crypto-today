@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Row, Col, Statistic } from 'antd';
+import { Typography, Row } from 'antd';
 import { useGetCryptoCoinsQuery } from '../../services/crypto-api';
 
 import StatusCard from '../../components/StatusCard';
@@ -35,7 +35,7 @@ const Homepage: React.FC = () => {
                     />
                 </div>
 
-                <div className='col-3'>
+                <div className='col-2'>
                     <StatusCard
                         title='Total Exchanges'
                         count={millify(totalExchanges)}
@@ -47,7 +47,7 @@ const Homepage: React.FC = () => {
                     <StatusCard
                         title='Total Market Cap'
                         count={millify(totalMarketCap)}
-                        icon={'bx bx-dollar-circle'}
+                        icon={'bx bx-dollar'}
                     />
                 </div>
 
@@ -55,7 +55,7 @@ const Homepage: React.FC = () => {
                     <StatusCard
                         title='Total 24h Volume'
                         count={millify(total24hVolume)}
-                        icon={'bx bx-dollar-circle'}
+                        icon={'bx bx-dollar'}
                     />
                 </div>
 
@@ -63,7 +63,7 @@ const Homepage: React.FC = () => {
                     <StatusCard
                         title='Total Markets'
                         count={millify(totalMarkets)}
-                        icon={'bx bx-dollar-circle'}
+                        icon={'bx bx-dollar'}
                     />
                 </div>
             </Row>
