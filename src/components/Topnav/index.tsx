@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Dropdown from '../Dropdown';
@@ -11,7 +11,6 @@ import user_menu from '../../assets/json-data/user_menus.json';
 
 import IContentData from '../../interfaces/IContentData';
 import ThemeMenu from '../ThemeMenu';
-import SearchBar from '../SearchBar';
 
 import './index.css';
 
@@ -32,12 +31,8 @@ const renderUserToggle = (displayName: string, image: string) => (
 )
 
 const Topnav: React.FC = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('');
-    console.log(searchTerm)
-    
     return (
         <div className='topnav'>
-            <SearchBar setSearchTerm={setSearchTerm} />
             <div className="topnav__right">
                 <div className="topnav__right-item">
                     <Dropdown

@@ -5,11 +5,12 @@
     background-color: var(--main-bg);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
-    position: relative;
+    position: relative !important;
     overflow: hidden;
     z-index: 1;
-    transition: color 0.5s ease 0s;
+    transition: color 0.5s ease 0s !important;
     margin-bottom: 30px;
+    height: 100% !important;
 }
 
 .status-card__icon {
@@ -32,6 +33,7 @@
 .status-card__info > h4 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    color: inherit !important;
 }
 
 .status-card::before {

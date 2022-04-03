@@ -11,10 +11,10 @@ const Router: React.FC = () => {
     return (
         <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
             <Route path="/cryptocurrencies/:coinId" element={<CryptoDetails />} />
             <Route path="/news" element={<News />} />
+            <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
     )
 }

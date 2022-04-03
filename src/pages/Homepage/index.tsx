@@ -28,35 +28,35 @@ const Homepage: React.FC = () => {
         <Fragment>
             <Title level={2} className='heading'>Crypto Stats</Title>
             <Row gutter={[24, 24]}>
-                <Col xs={24} sm={12} lg={6} key={0}>
+                <Col xs={24} sm={12} lg={5} key={0}>
                     <StatusCard
                         title='Total Cryptocurrencies'
                         count={millify(totalCryptocurrencies)}
                         icon={'bx bx-dollar-circle'}
                     />
                 </Col>
-                <Col xs={18} sm={8} lg={4} key={1}>
+                <Col xs={24} sm={12} lg={4} key={1}>
                     <StatusCard
                         title='Total Exchanges'
                         count={millify(totalExchanges)}
                         icon={'bx bx-dollar-circle'}
                     />
                 </Col>
-                <Col xs={18} sm={8} lg={4} key={2}>
+                <Col xs={24} sm={12} lg={5} key={2}>
                     <StatusCard
                         title='Total Market Cap'
                         count={millify(totalMarketCap)}
                         icon={'bx bx-dollar'}
                     />
                 </Col>
-                <Col xs={18} sm={8} lg={4} key={3}>
+                <Col xs={24} sm={12} lg={4} key={3}>
                     <StatusCard
                         title='Total 24h Volume'
                         count={millify(total24hVolume)}
                         icon={'bx bx-dollar'}
                     />
                 </Col>
-                <Col xs={18} sm={8} lg={4} key={4}>
+                <Col xs={24} sm={12} lg={5} key={4}>
                     <StatusCard
                         title='Total Markets'
                         count={millify(totalMarkets)}

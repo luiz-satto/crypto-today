@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input } from 'antd';
+import { Card, Row, Col } from 'antd';
 
 import { useGetCryptoCoinsQuery } from '../../services/crypto-api';
 import { CryptoCoin } from '../../types/CryptoCoin';
