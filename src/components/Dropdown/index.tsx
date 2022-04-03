@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { CryptoNews } from '../../types/CryptoNews'
 import IContentData from '../../interfaces/IContentData'
 
 import './index.css'
@@ -6,9 +7,9 @@ import './index.css'
 interface IProps {
     icon?: string,
     badge?: string,
-    contentData: IContentData[],
+    contentData: IContentData[] | CryptoNews[],
     customToggle?: () => JSX.Element,
-    renderItems: (item: IContentData, index: number) => JSX.Element,
+    renderItems: (item: IContentData | CryptoNews, index: number) => JSX.Element,
     renderFooter?: () => JSX.Element
 }
 

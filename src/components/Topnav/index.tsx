@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useGetNewsQuery } from '../../services/crypto-news-api';
 
 import Dropdown from '../Dropdown';
-import NotificationItem from '../NotificationItem';
 import UserMenu from '../UserMenu';
+import ThemeMenu from '../ThemeMenu';
+import Loader from '../../components/Loader';
+import NotificationItem from '../NotificationItem';
+import IContentData from '../../interfaces/IContentData';
 
 import userImage from '../../assets/images/user.png';
-import notifications from '../../assets/json-data/notification.json';
 import user_menu from '../../assets/json-data/user_menus.json';
 
-import IContentData from '../../interfaces/IContentData';
-import ThemeMenu from '../ThemeMenu';
-
 import './index.css';
+import { CryptoNews } from '../../types/CryptoNews';
 
 const user = {
     displayName: 'Luiz Satto',
@@ -31,31 +32,34 @@ const renderUserToggle = (displayName: string, image: string) => (
 )
 
 const Topnav: React.FC = () => {
+    const { data: cryptoNews } = useGetNewsQuery({ newsCategory: 'Cryptocurrency', count: 5 });
+    if (!cryptoNews?.value) return <Loader />;
+
     return (
         <div className='topnav'>
+            <div className="topnav__right-item">
+                <Dropdown
+                    customToggle={() => renderUserToggle(user.displayName, user.image)}
+                    contentData={user_menu}
+                    renderItems={(item: any, index: number) =>
+                        <UserMenu item={item} index={index} />
+                    }
+                />
+            </div>
             <div className="topnav__right">
                 <div className="topnav__right-item">
-                    <ThemeMenu />
-                </div>
-                <div className="topnav__right-item">
                     <Dropdown
-                        icon='bx bx-bell'
-                        badge='12'
-                        contentData={notifications}
-                        renderFooter={() => <Link to='/'>View All</Link>}
-                        renderItems={(item: IContentData, index: number) =>
+                        icon='bx bx-category-alt'
+                        badge='!'
+                        contentData={cryptoNews?.value}
+                        renderFooter={() => <Link to='/news'>View All</Link>}
+                        renderItems={(item: IContentData | CryptoNews, index: number) =>
                             <NotificationItem item={item} index={index} />
                         }
                     />
                 </div>
                 <div className="topnav__right-item">
-                    <Dropdown
-                        customToggle={() => renderUserToggle(user.displayName, user.image)}
-                        contentData={user_menu}
-                        renderItems={(item: IContentData, index: number) =>
-                            <UserMenu item={item} index={index} />
-                        }
-                    />
+                    <ThemeMenu />
                 </div>
             </div>
         </div>

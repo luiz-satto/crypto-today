@@ -24,3 +24,12 @@
     margin-top: 0px !important;
     font-weight: 900 !important;
 }
+
+.line-chart-card {
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 100% !important;
+    background-color: var(--main-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}

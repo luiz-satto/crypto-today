@@ -61,7 +61,7 @@ const LineChart: React.FC<IProps> = props => {
     }
 
     return (
-        <div className="card full-height">
+        <div className="ant-col line-chart-card">
             <Row className='chart-header'>
                 <Title level={2} className='chart-title'>{props.coinName} Price Chart</Title>
                 <Col className='price-container' key={props.coinName}>

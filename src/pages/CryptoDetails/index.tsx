@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Col, Row, Typography, Select } from 'antd';
 
@@ -75,7 +75,8 @@ const CryptoDetails: React.FC = () => {
     const genericStats = getCryptoCoinGenericStats(cryptoDetails!);
 
     return (
-        <Col className='coin-detail-container'>
+        <Fragment>
+            <hr />
             <Col className='coin-heading-container'>
                 <Title level={2} className='coin-name'>
                     {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
@@ -85,7 +86,21 @@ const CryptoDetails: React.FC = () => {
                     View value statistics, market cap and supply.
                 </p>
             </Col>
+            <hr />
+            <Select
+                defaultValue='7d'
+                className='select-timeperiod'
+                placeholder='Select Time Period'
+                onChange={(value) => setTimePeriod(value)}
+            >
+                {time.map((date) => <Option key={date}>{date}</Option>)}
+            </Select>
             <Col className='stats-container'>
+                <LineChart
+                    coinHistory={coinHistory}
+                    currentPrice={millify(Number(cryptoDetails?.price))}
+                    coinName={cryptoDetails?.name!}
+                />
                 <Col className='coin-value-statistics'>
                     <Col className='coin-value-statistics-heading'>
                         <Title level={3} className='coin-details-heading'>
@@ -125,19 +140,7 @@ const CryptoDetails: React.FC = () => {
                     ))}
                 </Col>
             </Col>
-            <Select
-                defaultValue='7d'
-                className='select-timeperiod'
-                placeholder='Select Time Period'
-                onChange={(value) => setTimePeriod(value)}
-            >
-                {time.map((date) => <Option key={date}>{date}</Option>)}
-            </Select>
-            <LineChart
-                coinHistory={coinHistory}
-                currentPrice={millify(Number(cryptoDetails?.price))}
-                coinName={cryptoDetails?.name!}
-            />
+            <hr />
             <Col className='coin-desc-link'>
                 <Row className='coin-desc'>
                     <Title level={3} className='coin-details-heading'>
@@ -161,7 +164,7 @@ const CryptoDetails: React.FC = () => {
                     ))}
                 </Col>
             </Col>
-        </Col>
+        </Fragment>
     )
 }
 

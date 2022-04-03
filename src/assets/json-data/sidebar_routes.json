@@ -20,7 +20,7 @@
     {
         "display_name": "Dashboard",
         "route": "/dashboard",
-        "icon": "bx bx-category-alt",
+        "icon": "bx bx-stats",
         "key": 3
     }    
 ]
