@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Col, Row, Typography, Select } from 'antd';
 
-import millify from 'millify';
 import HTMLReactParser from 'html-react-parser';
 import LineChart from '../../components/LineChart';
 import Loader from '../../components/Loader';
+import millify from 'millify';
+import './index.css';
 
 import {
     MoneyCollectOutlined,
@@ -84,19 +85,6 @@ const CryptoDetails: React.FC = () => {
                     View value statistics, market cap and supply.
                 </p>
             </Col>
-            <Select
-                defaultValue='7d'
-                className='select-timeperiod'
-                placeholder='Select Time Period'
-                onChange={(value) => setTimePeriod(value)}
-            >
-                {time.map((date) => <Option key={date}>{date}</Option>)}
-            </Select>
-            <LineChart
-                coinHistory={coinHistory}
-                currentPrice={millify(Number(cryptoDetails?.price))}
-                coinName={cryptoDetails?.name!}
-            />
             <Col className='stats-container'>
                 <Col className='coin-value-statistics'>
                     <Col className='coin-value-statistics-heading'>
@@ -137,6 +125,19 @@ const CryptoDetails: React.FC = () => {
                     ))}
                 </Col>
             </Col>
+            <Select
+                defaultValue='7d'
+                className='select-timeperiod'
+                placeholder='Select Time Period'
+                onChange={(value) => setTimePeriod(value)}
+            >
+                {time.map((date) => <Option key={date}>{date}</Option>)}
+            </Select>
+            <LineChart
+                coinHistory={coinHistory}
+                currentPrice={millify(Number(cryptoDetails?.price))}
+                coinName={cryptoDetails?.name!}
+            />
             <Col className='coin-desc-link'>
                 <Row className='coin-desc'>
                     <Title level={3} className='coin-details-heading'>

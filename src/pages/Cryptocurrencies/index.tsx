@@ -5,10 +5,10 @@ import { Card, Row, Col } from 'antd';
 import { useGetCryptoCoinsQuery } from '../../services/crypto-api';
 import { CryptoCoin } from '../../types/CryptoCoin';
 
+import SearchBar from '../../components/SearchBar';
 import Loader from '../../components/Loader';
 import millify from 'millify';
 import './index.css';
-import SearchBar from '../../components/SearchBar';
 
 interface IProps {
     simplified?: boolean

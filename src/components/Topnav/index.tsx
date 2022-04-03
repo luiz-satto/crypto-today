@@ -35,13 +35,7 @@ const Topnav: React.FC = () => {
         <div className='topnav'>
             <div className="topnav__right">
                 <div className="topnav__right-item">
-                    <Dropdown
-                        customToggle={() => renderUserToggle(user.displayName, user.image)}
-                        contentData={user_menu}
-                        renderItems={(item: IContentData, index: number) =>
-                            <UserMenu item={item} index={index} />
-                        }
-                    />
+                    <ThemeMenu />
                 </div>
                 <div className="topnav__right-item">
                     <Dropdown
@@ -55,7 +49,13 @@ const Topnav: React.FC = () => {
                     />
                 </div>
                 <div className="topnav__right-item">
-                    <ThemeMenu />
+                    <Dropdown
+                        customToggle={() => renderUserToggle(user.displayName, user.image)}
+                        contentData={user_menu}
+                        renderItems={(item: IContentData, index: number) =>
+                            <UserMenu item={item} index={index} />
+                        }
+                    />
                 </div>
             </div>
         </div>

@@ -1,52 +1,13 @@
-import React, { Fragment } from 'react';
-// import { Line } from 'react-chartjs-2';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Col, Row, Typography } from 'antd';
-
 import { ApexOptions } from 'apexcharts';
+
 import Chart from 'react-apexcharts';
 import ICryptoCoinHistory from '../../interfaces/ICryptoCoinHistory';
 
-// import {
-//     Chart as ChartJS,
-//     CategoryScale,
-//     LinearScale,
-//     PointElement,
-//     LineElement,
-//     Tooltip,
-//     Legend,
-// } from 'chart.js'
-
-// ChartJS.register(
-//     CategoryScale,
-//     LinearScale,
-//     PointElement,
-//     LineElement,
-//     Tooltip,
-//     Legend
-// );
-
-const chartOptions: ApexOptions = {
-    colors: ['#6ab04c', '#2980b9'],
-    chart: {
-        background: 'transparent'
-    },
-    dataLabels: {
-        enabled: false
-    },
-    stroke: {
-        curve: 'smooth'
-    },
-    xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-    },
-    legend: {
-        position: 'top'
-    },
-    grid: {
-        show: false
-    }
-}
+import millify from 'millify';
+import './index.css';
 
 interface IProps {
     coinHistory: ICryptoCoinHistory | undefined,
@@ -66,44 +27,41 @@ const LineChart: React.FC<IProps> = props => {
         for (let i = 0; i < coinHistoryData?.history.length; i++) {
             let timestamp = coinHistoryData?.history[i].timestamp * 1000;
             coinTimestamp.push(new Date(timestamp).toLocaleDateString());
-            coinPrice.push(coinHistoryData?.history[i].price);
+            coinPrice.push(millify(Number(coinHistoryData?.history[i].price)) + ' K');
         }
     }
 
     const chartSeries = [
         {
-            name: 'Price In USD',
+            name: 'Price in USD',
             data: coinPrice
         }
     ]
 
-    // const data = {
-    //     labels: coinTimestamp,
-    //     datasets: [
-    //         {
-    //             label: 'Price In USD',
-    //             data: coinPrice,
-    //             fill: false,
-    //             backgroundColor: '#0071bd',
-    //             borderColor: '#0071bd',
-    //         },
-    //     ],
-    // };
-
-    // const options: any = {
-    //     scales: {
-    //         yAxes: [
-    //             {
-    //                 ticks: {
-    //                     beginAtZero: true,
-    //                 },
-    //             },
-    //         ],
-    //     },
-    // };
+    const chartOptions: ApexOptions = {
+        colors: ['#6ab04c', '#2980b9'],
+        chart: {
+            background: 'transparent'
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        xaxis: {
+            categories: coinTimestamp
+        },
+        legend: {
+            position: 'top'
+        },
+        grid: {
+            show: false
+        }
+    }
 
     return (
-        <Fragment>
+        <div className="card full-height">
             <Row className='chart-header'>
                 <Title level={2} className='chart-title'>{props.coinName} Price Chart</Title>
                 <Col className='price-container' key={props.coinName}>
@@ -111,7 +69,7 @@ const LineChart: React.FC<IProps> = props => {
                     <Title level={5} className='current-price'>Current {props.coinName} Price: $ {props.currentPrice}</Title>
                 </Col>
             </Row>
-            {/* <Line data={data} options={options} /> */}
+
             <Chart
                 options={themeReducer === 'theme-mode-dark'
                     ? {
@@ -126,7 +84,7 @@ const LineChart: React.FC<IProps> = props => {
                 type='line'
                 height='100%'
             />
-        </Fragment>
+        </div>
     )
 }
 
