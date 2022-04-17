@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Typography } from 'antd';
 
 import SidebarItem from '../SidebarItem';
-import sidebar_items from '../../assets/json-data/sidebar_routes.json';
+import sidebar_items from './sidebar_routes.json';
 import icon from '../../assets/images/logo.png';
 import './index.css';
 

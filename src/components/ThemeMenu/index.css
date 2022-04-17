@@ -15,6 +15,10 @@
     right: 0;
 }
 
+.theme-menu.active > h4 {
+    color: var(--txt-color) !important;
+}
+
 .theme-menu__close {
     position: absolute;
     top: 17px;

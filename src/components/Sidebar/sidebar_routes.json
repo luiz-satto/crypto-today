@@ -16,11 +16,5 @@
         "route": "/news",
         "icon": "bx bx-news",
         "key": 2
-    },
-    {
-        "display_name": "Dashboard",
-        "route": "/dashboard",
-        "icon": "bx bx-stats",
-        "key": 3
-    }    
+    }
 ]
