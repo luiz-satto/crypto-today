@@ -25,5 +25,5 @@
 }
 
 .sidebar__logo__title a{
-   color: var(--txt-color);
+   color: var(--main-color) !important;
 }

@@ -8,6 +8,7 @@
     align-items: center;
     font-weight: 600;
     transition: color 0.3s ease 0s;
+    color: var(--main-color);
 }
 
 .sidebar__item-inner > i {
@@ -19,8 +20,8 @@
     text-transform: capitalize;
 }
 
-.sidebar__item-inner:hover {
-    color: var(--main-color);
+.sidebar__item-inner:hover {    
+    color: var(--second-color);
 }
 
 .sidebar__item-inner.active {

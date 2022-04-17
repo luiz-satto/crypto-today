@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const Cryptocurrencies: React.FC<IProps> = props => {
-    const count = props.simplified ? 10 : 100;
+    const count = props.simplified ? 4 : 100;
     const { data: cryptosList, isFetching } = useGetCryptoCoinsQuery(count);
     const [cryptos, setCryptos] = useState<CryptoCoin[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -36,7 +36,7 @@ const Cryptocurrencies: React.FC<IProps> = props => {
                 <SearchBar setSearchTerm={setSearchTerm} />
             )}
 
-            <Row gutter={[32, 32]} className='crypto-card-container'>
+            <Row gutter={[12, 12]} className='crypto-card-container'>
                 {cryptos?.map((currency) => (
                     <Col xs={24} sm={12} lg={6} key={currency.uuid}>
                         <Link to={(props.simplified ? `cryptocurrencies/` : '') + `${currency.uuid}`}>
@@ -46,7 +46,11 @@ const Cryptocurrencies: React.FC<IProps> = props => {
                                 extra={<img className='crypto-image' src={currency.iconUrl} alt={currency.iconUrl} />}
                                 hoverable
                             >
-                                <p>Price: {millify(Number(currency.price))}</p>
+                                <p>Price: {
+                                    (Number(currency.price) < 1) ?
+                                        millify(Number(currency.price), { precision: 6 })
+                                        : millify(Number(currency.price))
+                                }</p>
                                 <p>Market Cap: {millify(Number(currency.marketCap))}</p>
                                 <p>Daily Change: {millify(Number(currency.change))}%</p>
                             </Card>

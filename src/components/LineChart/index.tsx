@@ -27,7 +27,7 @@ const LineChart: React.FC<IProps> = props => {
         for (let i = 0; i < coinHistoryData?.history.length; i++) {
             let timestamp = coinHistoryData?.history[i].timestamp * 1000;
             coinTimestamp.push(new Date(timestamp).toLocaleDateString());
-            coinPrice.push(millify(Number(coinHistoryData?.history[i].price)) + ' K');
+            coinPrice.push(coinHistoryData?.history[i].price);
         }
     }
 
@@ -39,31 +39,47 @@ const LineChart: React.FC<IProps> = props => {
     ]
 
     const chartOptions: ApexOptions = {
-        colors: ['#6ab04c', '#2980b9'],
+        colors: ['var(--main-color)', 'var(--second-color)'],
         chart: {
-            background: 'transparent'
+            background: 'transparent',
+            toolbar: { show: false }
         },
         dataLabels: {
-            enabled: false
+            enabled: false,
+            textAnchor: 'start',
         },
         stroke: {
-            curve: 'smooth'
+            curve: 'straight'
+        },
+        yaxis: {
+            labels: {
+                formatter: (value) => {
+                    if (value < 1) {
+                        return millify(value, { precision: 6, });
+                    }
+
+                    return millify(value);
+                }
+            }
         },
         xaxis: {
-            categories: coinTimestamp
+            categories: coinTimestamp,
+            sorted: true,
+            labels: { show: false },
+            axisTicks: { show: false },
         },
         legend: {
             position: 'top'
         },
         grid: {
-            show: false
+            show: true
         }
     }
 
     return (
         <div className="ant-col line-chart-card">
             <Row className='chart-header'>
-                <Title level={2} className='chart-title'>{props.coinName} Price Chart</Title>
+                <Title level={2} className='chart-title'>{props.coinName} Price</Title>
                 <Col className='price-container' key={props.coinName}>
                     <Title level={5} className='price-change'>{coinHistoryData?.change}%</Title>
                     <Title level={5} className='current-price'>Current {props.coinName} Price: $ {props.currentPrice}</Title>

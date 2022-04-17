@@ -1,24 +1,5 @@
-.ant-card {
-    border: none !important;
-}
-
-.ant-card-head {
-    height: 30% !important;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: var(--main-color) !important;
-    border-bottom: 1px solid var(--second-color) !important;
-}
-
-.ant-card-body {
-    flex-grow: 1;
-    text-align: center;
-    z-index: 1;
-    text-transform: capitalize;
-}
-
 .crypto-card-container {
-    min-height: 65vh !important;
+    min-height: 30vh !important;
 }
 
 .crypto-card {

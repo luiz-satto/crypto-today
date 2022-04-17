@@ -28,19 +28,23 @@ const { Title, Text } = Typography;
 const { Option } = Select;
 
 function getCryptoCoinStats(cryptoDetails: CryptoCoin) {
-    const price = cryptoDetails.price ? cryptoDetails.price : 0;
+    const priceToUSD = cryptoDetails.price ?
+        Number(cryptoDetails.price) < 1 ?
+            millify(Number(cryptoDetails.price), { precision: 6 })
+            : millify(Number(cryptoDetails.price))
+        : 0;
+
     const rank = cryptoDetails.rank ? cryptoDetails?.rank : 0;
-    const volume = cryptoDetails['24hVolume'] ? cryptoDetails['24hVolume'] : 0;
-    const marketCap = cryptoDetails?.marketCap ? cryptoDetails?.marketCap : 0;
-    const allTimeHigh = cryptoDetails.allTimeHigh;
-    const allTimeHighPrice = allTimeHigh?.price ? allTimeHigh?.price : 0;
+    const volume = cryptoDetails['24hVolume'] ? millify(Number(cryptoDetails['24hVolume'])) : 0;
+    const marketCap = cryptoDetails?.marketCap ? millify(Number(cryptoDetails?.marketCap)) : 0;
+    const allTimeHighPrice = cryptoDetails.allTimeHigh?.price ? millify(Number(cryptoDetails.allTimeHigh?.price)) : 0;
 
     return [
-        { title: 'Price to USD', value: `$ ${millify(Number(price))}`, icon: <DollarCircleOutlined /> },
+        { title: 'Price to USD', value: `$ ${priceToUSD}`, icon: <DollarCircleOutlined /> },
         { title: 'Rank', value: rank, icon: <NumberOutlined /> },
-        { title: '24h Volume', value: `$ ${millify(Number(volume))}`, icon: <ThunderboltOutlined /> },
-        { title: 'Market Cap', value: `$ ${millify(Number(marketCap))}`, icon: <DollarCircleOutlined /> },
-        { title: 'All-time-high(daily avg.)', value: `$ ${millify(Number(allTimeHighPrice))}`, icon: <TrophyOutlined /> },
+        { title: '24h Volume', value: `$ ${volume}`, icon: <ThunderboltOutlined /> },
+        { title: 'Market Cap', value: `$ ${marketCap}`, icon: <DollarCircleOutlined /> },
+        { title: 'All-time-high(daily avg.)', value: `$ ${allTimeHighPrice}`, icon: <TrophyOutlined /> },
     ];
 }
 
@@ -48,20 +52,20 @@ function getCryptoCoinGenericStats(cryptoDetails: CryptoCoin) {
     const numberOfMarkets = cryptoDetails.numberOfMarkets ? cryptoDetails.numberOfMarkets : 0;
     const numberOfExchanges = cryptoDetails.numberOfExchanges ? cryptoDetails?.numberOfExchanges : 0;
     const confirmed = cryptoDetails.supply?.confirmed;
-    const total = cryptoDetails.supply?.total ? cryptoDetails.supply?.total : 0;
-    const circulating = cryptoDetails.supply?.circulating ? cryptoDetails.supply?.circulating : 0;
+    const totalSupply = cryptoDetails.supply?.total ? millify(Number(cryptoDetails.supply?.total)) : 0;
+    const circulating = cryptoDetails.supply?.circulating ? millify(Number(cryptoDetails.supply?.circulating)) : 0;
 
     return [
         { title: 'Number Of Markets', value: numberOfMarkets, icon: <FundOutlined /> },
         { title: 'Number Of Exchanges', value: numberOfExchanges, icon: <MoneyCollectOutlined /> },
         { title: 'Aprroved Supply', value: confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
-        { title: 'Total Supply', value: `$ ${millify(Number(total))}`, icon: <ExclamationCircleOutlined /> },
-        { title: 'Circulating Supply', value: `$ ${millify(Number(circulating))}`, icon: <ExclamationCircleOutlined /> },
+        { title: 'Total Supply', value: `$ ${totalSupply}`, icon: <ExclamationCircleOutlined /> },
+        { title: 'Circulating Supply', value: `$ ${circulating}`, icon: <ExclamationCircleOutlined /> },
     ];
 }
 
 const CryptoDetails: React.FC = () => {
-    const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+    const time = ['24h', '7d', '30d'];
     const [timePeriod, setTimePeriod] = useState('7d');
 
     const { coinId } = useParams();
@@ -79,10 +83,10 @@ const CryptoDetails: React.FC = () => {
             <hr />
             <Col className='coin-heading-container'>
                 <Title level={2} className='coin-name'>
-                    {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
+                    {cryptoDetails?.name} ({cryptoDetails?.symbol})
                 </Title>
                 <p>
-                    {cryptoDetails?.name} live price in US dollars.
+                    {cryptoDetails?.name} price in US dollars.
                     View value statistics, market cap and supply.
                 </p>
             </Col>
@@ -98,7 +102,11 @@ const CryptoDetails: React.FC = () => {
             <Col className='stats-container'>
                 <LineChart
                     coinHistory={coinHistory}
-                    currentPrice={millify(Number(cryptoDetails?.price))}
+                    currentPrice={
+                        Number(cryptoDetails?.price) < 1 ?
+                            millify(Number(cryptoDetails?.price), { precision: 6 })
+                            : millify(Number(cryptoDetails?.price))
+                    }
                     coinName={cryptoDetails?.name!}
                 />
                 <Col className='coin-value-statistics'>

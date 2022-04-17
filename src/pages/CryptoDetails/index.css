@@ -22,7 +22,7 @@
 }
 
 .coin-desc-link a{
-    color: var(--pink);
+    color: #1890ff !important;    
 }
 
 .coin-desc-link h3{
