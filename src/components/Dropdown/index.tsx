@@ -7,7 +7,7 @@ import './index.css'
 interface IProps {
     icon?: string,
     badge?: string,
-    contentData: IContentData[] | CryptoNews[],
+    contentData: any[],
     customToggle?: () => JSX.Element,
     renderItems: (item: IContentData | CryptoNews, index: number) => JSX.Element,
     renderFooter?: () => JSX.Element
